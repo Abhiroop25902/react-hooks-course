@@ -1,10 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
-  return (
+  const [status, setStatus] = useState('Not Delivered');
+
+    return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <h1>The package is: {status}</h1>
+      <button onClick={() => setStatus('Delivered')}>Deliver</button>
     </div>
   );
 }
