@@ -2,13 +2,16 @@ import './App.css';
 import {useReducer} from "react";
 
 function App() {
-    const [number, setNumber] = useReducer((number, newNumber) => {
-        return number + newNumber;
-    }, 0);
+    const [checked, toggle] = useReducer(checked => !checked, false);
 
     return (
-        <h1 onClick={() => setNumber(1)}>{number}</h1>
-    );
+        <>
+            <input type="checkbox"
+                   value={checked}
+                   onChange={toggle}/>
+            {checked ? "checked" : "not checked"}
+        </>
+    )
 }
 
 export default App;
