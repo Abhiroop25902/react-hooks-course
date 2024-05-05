@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {createContext, useContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -10,7 +10,11 @@ const trees = [
     {id: "4", type: "Component"},
 ]
 
-export const TreesContext = createContext();
+const TreesContext = createContext(null);
+
+export const useTrees = () => {
+    return useContext(TreesContext);
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
