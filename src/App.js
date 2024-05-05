@@ -1,25 +1,19 @@
 import './App.css';
-import {useInput} from "./useInput";
+import {useContext} from "react";
+import {TreesContext} from "./index";
 
 function App() {
-    const [soundProps, resetSound] = useInput("");
-    const [colorProps, resetColor] = useInput("#000000");
-
-    const submit = (e) => {
-        e.preventDefault();
-        alert(`${soundProps.value} sounds like ${colorProps.value}`);
-        resetColor();
-        resetSound();
-    }
+    const {trees} = useContext(TreesContext);
 
     return (
-
-        <form onSubmit={submit}>
-            <input {...soundProps} type="text" placeholder={'Sound..'}/>
-            <input {...colorProps} type="color"/>
-            <button>Add</button>
-        </form>
-
+        <>
+            <h1>Trees that I have heard of</h1>
+            <ul>
+                {
+                    trees.map(tree => <li key={tree.id}>{tree.type}</li>)
+                }
+            </ul>
+        </>
     )
 }
 
